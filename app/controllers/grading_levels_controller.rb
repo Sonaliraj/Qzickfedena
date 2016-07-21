@@ -19,6 +19,14 @@
 class GradingLevelsController < ApplicationController
   before_filter :login_required
   filter_access_to :all
+  before_filter :current_user_from_grading_levels
+
+  def current_user_from_grading_levels
+    if @current_user
+       redirect_to :controller => 'user', :action => 'dashboard'
+    end
+  end
+
   def index
     @batches = Batch.active
     @grading_levels = GradingLevel.default

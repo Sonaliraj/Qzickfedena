@@ -24,7 +24,7 @@
   <% else %>
     <%= t('total_working_hours') %>: <%= working_days %>
   <% end %>|<%= t('total_present') %> : <%= @attendance %> |
-  <%= t('percentage') %>: <%= "%.2f" %(@percent.to_f) %>
+  <%#= t('percentage') %>: <%#= "%.2f" %(@percent.to_f) %>
 </div>
 <% unless @student_leaves.empty? %>
   <table id="listing" align="center" width="80%">

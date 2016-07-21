@@ -14,7 +14,7 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = true
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = true
 config.reload_plugins = true
 #config.after_initialize do
 #  Bullet.enable = true
@@ -29,3 +29,17 @@ config.reload_plugins = true
 #  rescue MissingSourceFile
 #  end
 #end
+
+#config.action_mailer.perform_deliveries = false
+
+#ActionMailer::Base.delivery_method = :smtp
+
+ActionMailer::Base.smtp_settings = {
+	:enable_starttls_auto => true,
+	:address => "smtp.gmail.com",
+	:port => 587,
+	:domain => "gmail.com",
+	:user_name => "apptestingruby1990@gmail.com",
+	:password => "rubyonrails",
+	:authentication => :plain
+}

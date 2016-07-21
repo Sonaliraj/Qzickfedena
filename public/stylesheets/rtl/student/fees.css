@@ -125,7 +125,7 @@
     margin:20px auto;
 }
 #inner-tab-menu ul li {
-    background-color:#9D0E00;
+    background-color: #0093dd;
     color:#FFFFFF;
     float:right;
     font-size:14px;
@@ -246,7 +246,7 @@
 }
 
 #category-list li div.category-name a:hover {
-    color: #BB0000;
+    color: #0093dd;
     font-weight: normal;
 }
 #inner-tab-menu ul li {

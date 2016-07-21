@@ -66,9 +66,9 @@ class TimetableController < ApplicationController
     if (@timetable.start_date <= Date.today and @timetable.end_date >= Date.today)
       @current=true
     end
-    if (@timetable.start_date > Date.today and @timetable.end_date > Date.today)
+    # if (@timetable.start_date > Date.today and @timetable.end_date > Date.today)
       @removable=true
-    end
+    # end
     if request.post?
       @tt=Timetable.find(params[:id])
       @error=false
@@ -167,7 +167,7 @@ class TimetableController < ApplicationController
 
   def edit_master
     @courses = Batch.active
-    @timetables=Timetable.find(:all,:conditions=>["end_date > ?",@local_tzone_time.to_date])
+    @timetables=Timetable.find(:all)
   end
 
   def teachers_timetable
@@ -252,12 +252,12 @@ class TimetableController < ApplicationController
     @batch = Batch.find(params[:course_id])
     @tt = Timetable.find(params[:timetable_id])
     @timetable = TimetableEntry.find_all_by_batch_id_and_timetable_id(@batch.id,@tt.id)
-    if @timetable.empty?
-      render :update do |page|
-        page.replace_html "timetable_view", :text => ""
-      end
-      return
-    end
+    # if @timetable.empty?
+    #   render :update do |page|
+    #     page.replace_html "timetable_view", :text => ""
+    #   end
+      # return
+    # end
     @weekday = ["#{t('sun')}", "#{t('mon')}", "#{t('tue')}", "#{t('wed')}", "#{t('thu')}", "#{t('fri')}", "#{t('sat')}"]
     @class_timing = ClassTiming.for_batch(@batch.id)
     if @class_timing.empty?
@@ -436,7 +436,8 @@ class TimetableController < ApplicationController
     admin = EmployeeCategory.find_by_prefix('admin')
     admin_ids = []
     admin_ids << admin.id unless admin.nil?
-    @employees = Employee.all(:conditions=>["employee_category_id not in (?)",admin_ids],:include=>[:employee_grade,:employees_subjects])
+    @employees = Employee.all
+    # (:conditions=>["employee_category_id not in (?)",admin_ids],:include=>[:employee_grade,:employees_subjects])
     @emp_subs = []
 
     if request.post?

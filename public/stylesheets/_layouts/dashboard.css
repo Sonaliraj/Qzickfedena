@@ -10,7 +10,7 @@ body {
 }
 #header_bg {
     height : 80px;
-    background : #b00 url(../../images/application/pattern_fedena_header.png) repeat;
+    background : #0093dd;
 }
 #header {
     width : 980px; 
@@ -53,7 +53,7 @@ body {
 }
 #main-menu li a {
     background : #fff;
-    color : #b00;
+    color : #0093dd;
     display : block;
     font-size : 0.8em;
     float : left;
@@ -79,7 +79,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd;
 }
 #main-menu li:hover ul.level-1{
     visibility: visible;
@@ -123,7 +123,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd;
 }
 #main-menu li ul.level-1 li:hover ul.level-2{
     visibility: visible;
@@ -188,7 +188,7 @@ p.flash-msg {
 
 #footer {
     height:33px;
-    background:#b00 url(../../images/application/app_layout_footer_bg.jpg) repeat;
+    background:#0093dd;
 }
 #footer #footer_links {
     height:33px;width:614px;
@@ -228,7 +228,7 @@ p.flash-msg {
 #content-header h3 {
     margin:0px;
     padding:0 0 0 150px;
-    color:#b00;
+    color:#0093dd;
 }
 #app-back-button {
     float:right
@@ -258,7 +258,7 @@ p.flash-msg {
 }
 #news_feed small {
     padding-top:0px;
-    color:#b00;
+    color:#0093dd;
 }
 #news_feed_top_img {
     background: url("../../images/fedena_user/dashboard/dash_news_top.jpg") no-repeat scroll 0 0 #FFFFFF;
@@ -374,7 +374,7 @@ body > #content_wrapper {
     font: normal 0.9em Arial;
     line-height: 18px;
     z-index: 100; /* zIndex should be greater than that of shadow's below */
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background:#0093dd url(../../images/application/app_layout_header_bg.jpg) repeat;
     width: 125px; /* default width for menu */
 }
 
@@ -480,12 +480,12 @@ body > #content_wrapper {
 /* Validation error messages */
 
 .fieldWithErrors{
-    border : 2px solid #b00;
+    border : 2px solid #0093dd;
     height : 25px; width : 225px;
 }
 .errorExplanation {
     background-color : #ffb1b1;
-    border : 1px solid #b00;
+    border : 1px solid #0093dd;
     height : auto; width : 510px;
     margin : 20px 0 40px 50px;
     padding : 10px 0 20px 20px;
@@ -513,7 +513,7 @@ body > #content_wrapper {
     padding : 0;
 }
 #inner-tab-menu ul li {
-    background-color : #9d0e00;
+    background-color :  #0093dd;
     color : #fff;
     float : left;
     font-size : 0.9em;
@@ -535,7 +535,7 @@ body > #content_wrapper {
     margin-top :15px;
     height : 66px;
     clear : both;
-    background: url(/images/foot.png) repeat-x;
+    background: #0093dd;
     width:100%;
 }
 #footer_logo {
@@ -550,11 +550,11 @@ body > #content_wrapper {
     height:66px;
     margin-top:-55px;
     width:210px;
-    background: url(/images/footer-logo.png) no-repeat 0 0 transparent;
+    background: #0093dd;
 }
 
 #footer_logo a.footer-logo:hover {
-    background: url(/images/footer-logo.png) no-repeat -210px 0 transparent;
+    background: #0093dd;
 
 }
 
@@ -567,6 +567,7 @@ body > #content_wrapper {
     font-size:12px;
     font-weight:bold;
     float: right;
+    padding-right: 10px;
 }
 #powered_by a {
     color:#fff;
@@ -602,7 +603,7 @@ body > #content_wrapper {
 #news_bar .news_box .news-title a{
     width: 313px;
     font-size: 13px;
-    color: #c80000;
+    color: #0093dd;
     font-weight: bold;
     text-decoration: none;
 }
@@ -630,11 +631,12 @@ body > #content_wrapper {
 }
 
 #institution-name{
-    margin: 12px 0 0 0;
+    margin: 15px 0 0 0;
     float: left;
-    color: #ffffff;
-    font-size: 15px;
+    color: #D3D3D3;
+    font-size: 25px;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 #header_link{
@@ -675,4 +677,23 @@ body > #content_wrapper {
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+}
+
+#header_logo{
+  margin-top: 17px;
+  float: left;
+}
+#header_logo img{
+    width: 45px;
+    height: 35px;
+    display: inline;
+}
+
+#footer1_logo{
+  margin-top: 17px;
+  float: right;
+}
+#footer1_logo img{
+    width: 45px;
+    height: 35px;
 }

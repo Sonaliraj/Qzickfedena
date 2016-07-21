@@ -10,7 +10,7 @@ body {
 }
 #header_bg {
     height : 60px;
-    background : #b00 url(../../../images/application/app_layout_header_bg.jpg) repeat;
+    background : #0093dd;
 }
 #header {
     width : 980px; height : 60px;
@@ -38,7 +38,7 @@ body {
 }
 #main-menu a {
     background : #fff;
-    color : #b00;
+    color : #0093dd;
     display : block;
     font-size : 0.8em;
     float : right;
@@ -81,7 +81,7 @@ p.flash-msg {
 
 #footer {
     height:33px;
-    background:#b00 url(../../../images/application/app_layout_footer_bg.jpg) repeat;
+    background:#0093dd url(../../../images/application/app_layout_footer_bg.jpg) repeat;
 }
 #footer #footer_links {
     height:33px;width:614px;
@@ -121,7 +121,7 @@ p.flash-msg {
 #content-header h3 {
     margin:0px;
     padding:0 100px 0 0;
-    color:#b00;
+    color:#0093dd;
     font-size: 17px;
 }
 #app-back-button {
@@ -155,7 +155,7 @@ p.flash-msg {
 }
 #news_feed small {
     padding-top:0px;
-    color:#b00;
+    color:#0093dd;
 }
 #news_feed_top_img {
     margin:0 auto;
@@ -236,7 +236,7 @@ body > #content_wrapper {
     font: normal 0.9em Arial;
     line-height: 18px;
     z-index: 100; /* zIndex should be greater than that of shadow's below */
-    background: #b00 url(../../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd url(../../../images/application/app_layout_header_bg.jpg) repeat;
     width: 125px; /* default width for menu */
 }
 
@@ -348,12 +348,12 @@ body > #content_wrapper {
 /* Validation error messages */
 
 .fieldWithErrors input{
-    border : 1px solid #b00;
+    border : 1px solid #0093dd;
     
 }
 .errorExplanation {
     background-color : #ffb1b1;
-    border : 1px solid #b00;
+    border : 1px solid #0093dd;
     height : auto; width : 510px;
     margin : 20px 50px 40px 0;
     padding : 10px 20px 20px 0;
@@ -381,7 +381,7 @@ body > #content_wrapper {
     padding : 0;
 }
 #inner-tab-menu ul li {
-    background-color : #9d0e00;
+    background-color :  #0093dd;
     color : #fff;
     float : right;
     font-size : 0.9em;

@@ -47,7 +47,7 @@
     </div>
 
     <div class="label-checkbox-pair">
-      <label class="status" for="status"><%= t('status') %></label>
+      <label class="status" for="status"><%#= t('status') %></label>
       <div id="radio-buttons">
       <%= c.radio_button  "status", "true", :checked => "checked" %>
       <label class="label_for_status" for="add_grade_status_true"><%= t('active') %></label>

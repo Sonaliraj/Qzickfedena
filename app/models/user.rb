@@ -35,6 +35,29 @@ class User < ActiveRecord::Base
   has_one :student_record,:class_name=>"Student",:foreign_key=>"user_id"
   has_one :employee_record,:class_name=>"Employee",:foreign_key=>"user_id"
 
+
+  def name
+    "#{first_name} #{last_name}"
+  end  
+
+
+  def self.to_csv(options = {})
+    #CSV.generate(options) do |csv|
+    #  csv << attributes
+    #  all.each_with_index do |student, index|
+    #    csv << [index+1, student.batch.name, ' ', student.name, student.email]
+    #  end
+    #end
+    csv_string = FasterCSV.generate do |csv| 
+      csv << ["SI NO.","User Name","User Email"]
+      User.all.each_with_index do |u, index|
+        csv << [index+1,u.name,u.email]
+      end
+    end
+    # csv_string
+  end
+
+
   def before_save
     self.salt = random_string(8) if self.salt == nil
     self.hashed_password = Digest::SHA1.hexdigest(self.salt + self.password) unless self.password.nil?

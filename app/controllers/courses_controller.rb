@@ -158,6 +158,8 @@ class CoursesController < ApplicationController
 
   end
 
+ 
+
   def create
     @course = Course.new params[:course]
     if @course.save

@@ -17,8 +17,8 @@
 #limitations under the License.
 
 class EmployeeDepartment < ActiveRecord::Base
-  validates_presence_of :name
-  validates_uniqueness_of :name, :code
+  #validates_presence_of :name
+  #validates_uniqueness_of :name, :code
   has_many :employees
   has_many  :employee_department_events
   has_many  :events,  :through=>:employee_department_events

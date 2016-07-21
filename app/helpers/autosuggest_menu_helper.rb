@@ -23,13 +23,13 @@ module AutosuggestMenuHelper
       default = [
         {:menu_type => 'link' ,:label => 'autosuggest_menu.student_admission',:value => {:controller => :student,:action => :admission1}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.employee_admission',:value =>{:controller => :employee,:action => :admission1}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.exam',:value =>{:controller => :exam,:action => :index}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.exam',:value =>{:controller => :exam,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.set_grading_levels',:value =>{:controller => :grading_levels,:action => :index}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.exam_management',:value =>{:controller => :exam,:action => :create_exam}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.additional_exams',:value =>{:controller => :additional_exam,:action => :create_additional_exam}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.exam_wise_report',:value =>{:controller => :exam,:action => :exam_wise_report}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.subject_wise_report',:value =>{:controller => :exam,:action => :subject_wise_report}},
-        {:menu_type => 'link' ,:label => 'autosuggest_menu.grouped_exam_report',:value =>{:controller => :exam,:action => :grouped_exam_report}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.exam_management',:value =>{:controller => :exam,:action => :create_exam}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.additional_exams',:value =>{:controller => :additional_exam,:action => :create_additional_exam}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.exam_wise_report',:value =>{:controller => :exam,:action => :exam_wise_report}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.subject_wise_report',:value =>{:controller => :exam,:action => :subject_wise_report}},
+        #{:menu_type => 'link' ,:label => 'autosuggest_menu.grouped_exam_report',:value =>{:controller => :exam,:action => :grouped_exam_report}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.news',:value =>{:controller => :news,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.event',:value =>{:controller => :event,:action => :index}},
         {:menu_type => 'link' ,:label => 'autosuggest_menu.view_news',:value =>{:controller => :news,:action => :all}},
@@ -109,6 +109,8 @@ module AutosuggestMenuHelper
         end
       end
       menu_items.to_json
+
     }
   end
+  #Rails.cache.clear
 end

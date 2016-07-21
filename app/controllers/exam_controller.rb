@@ -20,9 +20,18 @@ class ExamController < ApplicationController
   before_filter :login_required
   before_filter :protect_other_student_data
   before_filter :restrict_employees_from_exam
+  before_filter :current_user_from_exam
   filter_access_to :all
   
   def index
+  end
+
+
+  def current_user_from_exam
+    if @current_user
+       redirect_to :controller => 'user', :action => 'dashboard'
+       
+     end
   end
 
   def update_exam_form
@@ -1369,7 +1378,7 @@ class ExamController < ApplicationController
 
     bargraph = BarFilled.new()
     bargraph.width = 1;
-    bargraph.colour = '#bb0000';
+    bargraph.colour = '#0093dd';
     bargraph.dot_size = 5;
     bargraph.text = "#{t('students_marks')}"
     bargraph.values = data

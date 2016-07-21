@@ -10,8 +10,8 @@
 .timetable_td {
     float:left;
     width:80px;height:50px;
-    border-right : 2px solid #b00;
-    border-bottom : 2px solid #b00;
+    border-right : 2px solid #0093dd;
+    border-bottom : 2px solid #0093dd;
     background-color:#f5e9c8;
     font-size:small;
 }
@@ -21,7 +21,7 @@
     border:1px solid #800;
     padding-top:5px;
     text-align:center;
-    background-color:#900;
+    background- color:#0093dd;
     color:#fff;
     font-weight:bold;
     margin : 20px 0 0 0;
@@ -33,7 +33,7 @@
     border:1px solid #800;
     padding-top:15px;
     text-align:center;
-    background-color:#900;
+    background- color:#0093dd;
     color:#fff;
     font-weight:bold;
 }
@@ -65,7 +65,7 @@
     padding : 10px;
 }
 #errors a {
-    color : #b00;
+    color : #0093dd;
     display : inline;
 }
 #loader {

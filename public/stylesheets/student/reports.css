@@ -40,7 +40,7 @@
 }
 #attendance-reports-dashboard {
     color: #999999;
-    float: left;
+    text-align: center;
     padding: 0 0 0 40px;
 }
 #attendance-reports-dashboard h3 {

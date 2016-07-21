@@ -17,6 +17,8 @@
 #limitations under the License.
 
 class StudentController < ApplicationController
+
+  
   filter_access_to :all
   before_filter :login_required
   before_filter :protect_other_student_data, :except =>[:show]
@@ -26,6 +28,14 @@ class StudentController < ApplicationController
     :delete, :edit, :add_guardian, :email, :remove, :reports, :profile,
     :guardians, :academic_pdf,:show_previous_details,:fees,:fee_details
   ]
+
+  # def import
+  #   Student.import(params[:file])
+  #   redirect_to :controller => 'student', :action => 'view_all'
+  # end
+
+  
+  
 
   
   def academic_report_all
@@ -50,6 +60,7 @@ class StudentController < ApplicationController
       if @config.config_value.to_i == 1
         @exist = Student.find_by_admission_no(params[:student][:admission_no])
         if @exist.nil?
+          puts 'error.full_messages'
           @status = @student.save
         else
           @last_admitted_student = Student.find(:last)
@@ -194,6 +205,7 @@ class StudentController < ApplicationController
       flash[:notice] = "#{t('flash9')} #{@student.first_name} #{@student.last_name}."
       redirect_to :controller => "student", :action => "profile", :id => @student.id
     end
+
   end
 
   def edit_admission4
@@ -350,7 +362,7 @@ class StudentController < ApplicationController
   end
 
   def email
-    sender = current_user.email
+    sender = "#{current_user.email}"
     if request.post?
       recipient_list = []
       case params['email']['recipients']
@@ -593,7 +605,15 @@ class StudentController < ApplicationController
 
   def view_all
     @batches = Batch.active
+    if params[:file]
+      Student.import(params[:file])
+    end
+    
+    #Student.save(:validate => false)
+    # redirect_to :controller => 'student', :action => 'view_all'
   end
+
+ 
 
   def advanced_search
     @batches = Batch.all
@@ -1122,7 +1142,7 @@ class StudentController < ApplicationController
   #
   #    bargraph = BarFilled.new()
   #    bargraph.width = 1;
-  #    bargraph.colour = '#bb0000';
+  #    bargraph.colour = '#0093dd';
   #    bargraph.dot_size = 5;
   #    bargraph.text = "Student's marks"
   #    bargraph.values = data
@@ -1196,7 +1216,7 @@ class StudentController < ApplicationController
   #
   #    bargraph = BarFilled.new()
   #    bargraph.width = 1;
-  #    bargraph.colour = '#bb0000';
+  #    bargraph.colour = '#0093dd';
   #    bargraph.dot_size = 5;
   #    bargraph.text = "Student's average"
   #    bargraph.values = data
@@ -1250,7 +1270,7 @@ class StudentController < ApplicationController
   #
   #    bargraph = BarFilled.new()
   #    bargraph.width = 1;
-  #    bargraph.colour = '#bb0000';
+  #    bargraph.colour = '#0093dd';
   #    bargraph.dot_size = 5;
   #    bargraph.text = "Student's average"
   #    bargraph.values = data
@@ -1287,6 +1307,15 @@ class StudentController < ApplicationController
   #    render :text => chart.render
   #
   #  end
+
+
+  # def extract
+  #   @students = Student.all
+  #   respond_to do |format|
+  #     format.csv { send_data @students.to_csv }
+  #     # format.xls # { send_data @products.to_csv(col_sep: "\t") }
+  #   end
+  # end
 
 
   private

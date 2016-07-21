@@ -116,22 +116,22 @@
           <%= select :configuration, :network_state, [["#{t('online')}","Online"],["#{t('offline')}","Offline"]],:selected =>@config[:network_state] %>
         </div>
       </div>
-      <div class="grades">
-        <div class="label-field-pair">
+      <!-- <div class="grades">
+        <!-- <div class="label-field-pair">
           <label for="configuration_grading_systems"><%= t('include_grading_systems') %></label>
-        </div>
-        <div class="fee_category_scroll">
-          <div class="sel-list">
+        </div> -->
+        <!-- <div class="fee_category_scroll"> -->
+         <!--  <div class="sel-list">
             <%= t('select') %>: <%= link_to_function t('all'), "$$('input.batches_box').each(function(checkbox) { checkbox.checked = true; });" %>,
             <%= link_to_function t('none'), "$$('input.batches_box').each(function(checkbox) { checkbox.checked = false; });" %>
-          </div>
+          </div> -->
           <% @grading_types.each do |key,val| %>
-            <div class="each_batch">
+<!--             <div class="each_batch">
               <%= check_box :configuration, val.underscore , :checked => (@enabled_grading_types.include? key),:class=>'batches_box' %> <label for="configuration_<%= val.underscore %>"><%= val %></label>
-            </div>
+            </div -->
           <% end %>
-        </div>
-      </div>
+        <!-- </div>
+      </div> --> 
 
       <% FedenaPlugin::REGISTERED_HOOKS[:general_settings_form].each do |mod| %>
         <%= render :partial=>mod.camelize.constantize.send("general_settings_form") %>

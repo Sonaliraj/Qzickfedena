@@ -6,7 +6,7 @@
 }
 .link-heading a {
     font-weight:bold;
-    color:#900;
+     color:#0093dd;
 }
 .link-descr {
     margin-top:5px;
@@ -99,7 +99,7 @@ width:1%;
     margin-bottom:5px;
 }
 .infolbl{
-    color:#b00;
+    color:#0093dd;
 }
 .field-label{
     width:80px;
@@ -116,7 +116,7 @@ width:1%;
     float:right;
 }
 .high{
-    color:#b00;
+    color:#0093dd;
 }
 .student_list{
 }

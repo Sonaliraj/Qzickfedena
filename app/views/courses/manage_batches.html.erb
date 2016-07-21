@@ -29,7 +29,7 @@
 <div id="inner-tab-menu">
   <ul>
     <% if permitted_to? :index ,:grading_levels %>
-    <li><%= link_to "#{t('grading_system')}", grading_levels_path %></li>
+    <!-- <li><%= link_to "#{t('grading_system')}", grading_levels_path %></li> -->
     <% end %>
     <li><%= link_to "#{t('batch_transfer')}", :controller => 'batch_transfers' %></li>
   </ul>

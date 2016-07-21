@@ -18,7 +18,7 @@
 }
 
 #information{min-height:100px;width:816px;margin:0px auto;padding-right:0px; margin-top:30px;}
-#no_result{font-weight:bold;color:#b00}
+#no_result{font-weight:bold;color:#0093dd}
 #ajax_result {padding:10px 0 10px 0;width:204px;float:right;}
 #ajax_result a{color:#000;font-weight:bold; text-decoration:none;}
 #ajax_result a:hover{color:#9E0F15; text-decoration:underline;}

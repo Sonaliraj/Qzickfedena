@@ -32,6 +32,14 @@ class UserController < ApplicationController
   
   def all
     @users = User.all
+    # @users = User.order(:name)
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { 
+    #     send_data User.to_csv, :filename => "test-file1.csv"
+    #   }
+    #   # format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    # end
   end
   
   def list_user
@@ -185,6 +193,7 @@ class UserController < ApplicationController
       @student = Student.find_by_admission_no(@user.username[1..@user.username.length])
     end
     #    @dash_news = News.find(:all, :limit => 3)
+    
   end
 
   def edit
@@ -242,6 +251,7 @@ class UserController < ApplicationController
     elsif authenticated_user.blank? and request.post?
       flash[:notice] = "#{t('login_error_message')}"
     end
+
   end
 
   def logout
@@ -256,7 +266,8 @@ class UserController < ApplicationController
       selected_logout_hook[:name].classify.constantize.send("logout_hook",self,"/")
     else
       redirect_to :controller => 'user', :action => 'login' and return
-    end    
+    end
+
   end
 
   def profile
@@ -365,6 +376,7 @@ class UserController < ApplicationController
     session[:user_id] = user.id
     flash[:notice] = "#{t('welcome')}, #{user.first_name} #{user.last_name}!"
     redirect_to session[:back_url] || {:controller => 'user', :action => 'dashboard'}
+    
   end
 end
 

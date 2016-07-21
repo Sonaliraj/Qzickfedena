@@ -25,7 +25,9 @@
     <%= link_to_function image_tag("/images/buttons/back.png",:border => 0), "history.back()" %>
   </div>
 </div>
+
 <div id="inner-tab-menu">
+
   <ul>
     <li><%= link_to "#{t('new_text')}", new_course_batch_path(@course) %> </li>
     <li><%= link_to "Group Batches", {:controller=>"courses", :action=>"grouped_batches", :id=>@course.id} %> </li>
@@ -46,6 +48,7 @@
       <%= link_to "#{t('courses_text')}", courses_path %> &raquo;
       <%= @course.full_name %>
     </div>
+    
 
 
     <ul id="category-list">

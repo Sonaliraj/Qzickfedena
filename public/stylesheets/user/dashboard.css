@@ -12,7 +12,7 @@
 #content_header h3 {
     margin-top:0px;
     padding:0px;
-    color:#b00;
+    color:#0093dd;
 }
 
 #user_options {
@@ -87,7 +87,7 @@
     position:absolute;
     top: 66px;
     left: 66px;
-    background:none repeat scroll 0 0 #9d0e00;
+    background:none repeat scroll 0 0  #0093dd;
     -moz-border-radius:10px;
       -webkit-border-radius:10px;
     font-size: 11px;

@@ -28,13 +28,13 @@
 #student_main_info h4 {
     margin:0;
     padding:0;
-    color:#b00;
+    color:#0093dd;
     margin-top:10px;
 }
 #student_main_info h6 {
     margin:0;
     padding:0;
-    color:#b00;
+    color:#0093dd;
     margin-top:5px;
 }
 #student_main_info h5 {
@@ -73,7 +73,7 @@
     color:#000;
 }
 .profile_info_text_top a:hover{
-    color:#BB0000;
+    color:#0093dd;
 }
 .profile_info_label_top2 {
     padding-top:15px;
@@ -248,7 +248,7 @@ a.user_button:hover{
     text-align:left;
     width:100px;
     font-size:.8em;
-    background:#9D0E00;
+    background: #0093dd;
     -webkit-border-bottom-left-radius:5px;
     -webkit-border-bottom-right-radius:5px;
     -khtml-border-radius-bottomleft:5px;
@@ -301,7 +301,7 @@ html>body #nav ul.scriptaculously{/*ie shit*/
     height:1.5em;
     display:block;
     /*padding:10px 10px 0 10px;*/
-    background:#9D0E00;
+    background: #0093dd;
     /*	-webkit-border-top-left-radius:5px;
 	-webkit-border-top-right-radius:5px;
 	-khtml-border-radius-topleft:5px;
@@ -325,7 +325,7 @@ html>body #nav ul.scriptaculously{/*ie shit*/
     /*display:inline;
 	margin:0;
 	padding:0;*/
-    background-color : #9d0e00;
+    background-color :  #0093dd;
     color : #fff;
     float : left;
     font-size : 0.9em;
@@ -338,7 +338,7 @@ html>body #nav ul.scriptaculously{/*ie shit*/
 }
 
 #nav ul li ul li{
-    background-color:#9D0E00;
+    background-color: #0093dd;
     font-size:1.3em;
     width:60px;
     height:1.5em;

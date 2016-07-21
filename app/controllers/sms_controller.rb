@@ -18,6 +18,14 @@
 
 class SmsController < ApplicationController
   filter_access_to :all
+   before_filter :current_user_from_sms
+
+  def current_user_from_sms
+    if @current_user
+       redirect_to :controller => 'user', :action => 'dashboard'
+       
+     end
+  end
   
   def index
     @sms_setting = SmsSetting.new()

@@ -45,10 +45,10 @@
   <label><%= sms.check_box :student_admission_enabled, :checked=>@student_admission_sms_enabled.is_enabled %>
   <div class="att_list_names"><%= t('student_admission') %></div> </label>
   </li>  </div>
-  <div class="name_list<%=cycle('odd', 'even')%>"><li>
+  <!-- <div class="name_list<%=cycle('odd', 'even')%>"><li>
   <label> <%= sms.check_box :exam_schedule_result_enabled, :checked=>@exam_schedule_result_sms_enabled.is_enabled %>
   <div class="att_list_names"><%= t('exam_schedule') %> / <%= t('result') %></div> </label>
-  </li>  </div>
+  </li>  </div> -->
     <div class="name_list<%=cycle('odd', 'even')%>"><li>
   <label><%= sms.check_box :student_attendance_enabled, :checked=>@student_attendance_sms_enabled.is_enabled %>
   <div class="att_list_names"><%= t('attendance') %></div> </label>

@@ -82,6 +82,10 @@ class Timetable < ActiveRecord::Base
     today
   end
 
+   def full_name
+    "#{first_name}"
+   end
+
   def self.subject_tte(subject_id,date)
     subject=Subject.find(subject_id)
     unless subject.elective_group.nil?

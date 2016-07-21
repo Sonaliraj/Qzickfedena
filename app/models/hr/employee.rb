@@ -17,6 +17,8 @@
 #limitations under the License.
 
 class Employee < ActiveRecord::Base
+  require 'fastercsv'
+
   belongs_to  :employee_category
   belongs_to  :employee_position
   belongs_to  :employee_grade
@@ -38,12 +40,12 @@ class Employee < ActiveRecord::Base
   validates_format_of     :email, :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,   :allow_blank=>true,
     :message => "#{t('must_be_a_valid_email_address')}"
 
-  validates_presence_of :employee_category_id, :employee_number, :first_name, :employee_position_id,
-    :employee_department_id,  :date_of_birth,:joining_date
-  validates_uniqueness_of  :employee_number
+  # validates_presence_of :employee_category_id, :employee_number, :first_name, :employee_position_id,
+  #   :employee_department_id,  :date_of_birth,:joining_date
+   #validates_uniqueness_of  :employee_number
 
-  validates_associated :user
-  before_validation :create_user_and_validate
+   validates_associated :user
+   before_validation :create_user_and_validate
 
   has_attached_file :photo,
     :styles => {:original=> "125x125#"},
@@ -56,6 +58,31 @@ class Employee < ActiveRecord::Base
     :message=>'Image can only be GIF, PNG, JPG',:if=> Proc.new { |p| !p.photo_file_name.blank? }
   validates_attachment_size :photo, :less_than => 512000,\
     :message=>'must be less than 500 KB.',:if=> Proc.new { |p| p.photo_file_name_changed? }
+
+  def name
+    "#{first_name} #{middle_name} #{last_name}"
+  end  
+
+
+    #CSV.generate(options) do |csv|
+    #  csv << attributes
+    #  all.each_with_index do |student, index|
+    #    csv << [index+1, student.batch.name, ' ', student.name, student.email]
+    #  end
+    #end
+  def self.to_csv(options = {})
+    csv_string = FasterCSV.generate do |csv| 
+      csv << ["SI NO.", "Teacher Name", "Teacher Email"]
+      Employee.all.each_with_index do |e, index|
+       csv << [index+1, Employee.all(:conditions => ["job_title=?", "Teacher"]).collect{|e| [e.name, e.email]}]
+        #csv <<  [index+1, @emp]
+      end
+    end
+    # csv_string
+  end
+
+
+
 
   def create_user_and_validate
     if self.new_record?

@@ -20,7 +20,7 @@ class Course < ActiveRecord::Base
 
   GRADINGTYPES = {"1"=>"GPA","2"=>"CWA","3"=>"CCE"}
   
-  validates_presence_of :course_name, :code
+  #validates_presence_of :course_name, :code
   validate :presence_of_initial_batch, :on => :create
 
   has_many :batches

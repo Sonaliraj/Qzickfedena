@@ -308,7 +308,7 @@ class ArchivedStudentController < ApplicationController
 
     bargraph = BarFilled.new()
     bargraph.width = 1;
-    bargraph.colour = '#bb0000';
+    bargraph.colour = '#0093dd';
     bargraph.dot_size = 5;
     bargraph.text = "Student's marks"
     bargraph.values = data

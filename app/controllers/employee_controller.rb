@@ -522,6 +522,14 @@ class EmployeeController < ApplicationController
     @categories  = EmployeeCategory.all
     @positions   = EmployeePosition.all
     @grades      = EmployeeGrade.all
+    @employees = Employee.order(:name)
+    respond_to do |format|
+      format.html
+      format.csv { 
+        send_data Employee.to_csv, :filename => "test-file2.csv"
+      }
+      
+    end
   end
 
   def search_ajax

@@ -79,6 +79,7 @@ module ApplicationHelper
     Rails.cache.fetch("user_main_menu#{session[:user_id]}"){
       render :partial=>'layouts/main_menu'
     }
+    #Rails.cache.clear
   end
 
   def current_school_detail

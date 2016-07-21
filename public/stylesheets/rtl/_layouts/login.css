@@ -23,7 +23,7 @@ body {
     width:614px;height:1.5em;
 }
 #help_top #help_link {float:left;}
-#help_top #help_link a {color:#b00;padding-left:10px;}
+#help_top #help_link a {color:#0093dd;padding-left:10px;}
 
 #login_area_bg {background:#fff url(../../../images/login/form_bg.jpg) repeat-x;height:362px;}
 #login_area {height:362px;width:614px;background:#fff url(../../../images/login/login_box.jpg) no-repeat;margin:0px auto;}
@@ -71,8 +71,8 @@ body {
     font-size:14px;
 }
 #wrapper  #help_forgot_pw {margin:50px auto;text-align:center;width:614px;}
-#wrapper  #help_forgot_pw a {text-decoration:none;font-weight:bold;color:#b00;}
-#wrapper  #help_forgot_pw a:hover {text-decoration:underline;font-weight:bold;color:#b00;}
+#wrapper  #help_forgot_pw a {text-decoration:none;font-weight:bold;color:#0093dd;}
+#wrapper  #help_forgot_pw a:hover {text-decoration:underline;font-weight:bold;color:#0093dd;}
 
 #username_texbox_bg input{border:none;margin:0px; padding:0px;text-align:center;}
 

@@ -41,7 +41,8 @@ class ArchivedEmployee < ActiveRecord::Base
     :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
 
    def full_name
-    "#{first_name} #{middle_name} #{last_name}"
+    # "#{first_name} #{middle_name} #{last_name}"
+    "#{first_name}"
   end
 
 end

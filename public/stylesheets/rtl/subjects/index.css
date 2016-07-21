@@ -7,7 +7,7 @@
 }
 .link-heading a {
     font-weight:bold;
-    color:#900;
+     color:#0093dd;
 }
 .link-descr {
     margin-top:5px;
@@ -127,7 +127,7 @@
 }
 
 .add_sub a:hover{
-    color:#bb0000;
+    color:#0093dd;
     text-decoration: none;
 }
 

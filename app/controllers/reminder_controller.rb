@@ -20,6 +20,14 @@ class ReminderController < ApplicationController
   before_filter :login_required
   before_filter :protect_view_reminders, :only=>[:view_reminder,:mark_unread,:delete_reminder_by_recipient]
   before_filter :protect_sent_reminders, :only=>[:view_sent_reminder,:delete_reminder_by_sender]
+  before_filter :current_user_from_reminders
+
+  def current_user_from_reminders
+    if @current_user
+       redirect_to :controller => 'user', :action => 'dashboard'
+       
+     end
+  end
 
   def index
     @user = current_user

@@ -1,5 +1,5 @@
 .heading{
-    font-weight:bold;color:#900;
+    font-weight:bold; color:#0093dd;
     padding-bottom:20px;
 }
 
@@ -67,7 +67,7 @@
     margin:10px 40px 0 0;
 }
 .new-leaves-count{
-    background-color : #9d0e00;
+    background-color :  #0093dd;
     color : #fff;
     float : right;
     font-size : 0.9em;

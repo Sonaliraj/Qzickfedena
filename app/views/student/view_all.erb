@@ -26,6 +26,22 @@
   </div>
 </div>
 
+<!-- <div id='viewallstudent'>
+  <p>
+   Download:
+   <%= link_to "CSV", :controller=>"student", :action=>"view_all", :format=> "csv" %> 
+   <%#= link_to "Excel", :controller=>"student", :action=>"view_all", :format=> "xls" %>
+  </p>
+ </div>  -->
+
+ <h2>Import Students</h2>
+
+  <% form_tag  :url => {:controller => "student", :action => "view_all"}, :method => :post,:multipart => true do %>
+    <%= file_field_tag :file %><br><br>
+    <%= submit_tag "submit" %>
+  <% end %>
+
+
 <div id="page-yield">
 
   <% unless flash[:notice].nil? %>
@@ -51,3 +67,4 @@
   <div id="students"> </div>
 
 </div>
+ 

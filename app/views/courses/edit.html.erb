@@ -58,7 +58,7 @@
         <div class="input-container"><%= f.text_field :code %></div>
       </div>
 
-    <div id="grading">
+    <!-- <div id="grading">
       <% unless @grade_types.blank? %>
 
         <div class="label-field-pair">
@@ -66,7 +66,7 @@
           <div class="text-input-bg"><%= f.select :grading_type, @grade_types %></div>
         </div>
       <% end %>
-    </div>
+    </div> -->
 
       <%= submit_tag "", :value => "► #{t('save')}", :class => "submit_button" %>
 

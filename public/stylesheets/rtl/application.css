@@ -10,7 +10,7 @@ body {
 }
 #header_bg {
     height : 80px;
-    background : #b00 url(/images/application/pattern_fedena_header.png) repeat;
+    background : #0093dd;
 }
 #header {
     width : 980px;
@@ -76,7 +76,7 @@ body {
 }
 #main-menu li a {
     background : #fff;
-    color : #b00;
+    color : #0093dd;
     display : block;
     font-size : 0.8em;
     float : right;
@@ -102,7 +102,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd url(../../images/application/app_layout_header_bg.jpg) repeat;
 }
 #main-menu li:hover ul.level-1{
     visibility: visible;
@@ -146,7 +146,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd url(../../images/application/app_layout_header_bg.jpg) repeat;
 }
 #main-menu li ul.level-1 li:hover ul.level-2{
     visibility: visible;
@@ -227,7 +227,7 @@ p.flash-msg {
 #content-header h3 {
     margin:0px;
     padding:0 100px 0 0;
-    color:#b00;
+    color:#0093dd;
     font-size: 17px;
 }
 #app-back-button {
@@ -261,7 +261,7 @@ p.flash-msg {
 }
 #news_feed small {
     padding-top:0px;
-    color:#b00;
+    color:#0093dd;
 }
 #news_feed_top_img {
     margin:0 auto;
@@ -336,7 +336,7 @@ body > #content_wrapper {
     font: normal 0.9em Arial;
     line-height: 18px;
     z-index: 100; /* zIndex should be greater than that of shadow's below */
-    background: #b00 url(../../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #0093dd url(../../../images/application/app_layout_header_bg.jpg) repeat;
     width: 125px; /* default width for menu */
 }
 
@@ -449,7 +449,7 @@ body > #content_wrapper {
 /* Validation error messages */
 
 .fieldWithErrors input{
-    border : 1px solid #b00;
+    border : 1px solid #0093dd;
 
 }
 .errorExplanation {
@@ -488,7 +488,7 @@ body > #content_wrapper {
     padding : 0;
 }
 #inner-tab-menu ul li {
-    background-color : #9d0e00;
+    background-color :  #0093dd;
     color : #fff;
     float : right;
     font-size : 0.9em;
@@ -561,7 +561,7 @@ body > #content_wrapper {
     font-size:16px;
 }
 #MB_frame .head_label span{
-    color:#BB0000;
+    color:#0093dd;
 }
 #MB_frame #delete-button{
     float:right;
@@ -701,7 +701,7 @@ body > #content_wrapper {
     font-size:16px;
 }
 #MB_frame .head_label span{
-    color:#BB0000;
+    color:#0093dd;
 }
 #MB_frame .modelbox-time-pair {
     height : 40px;
@@ -883,12 +883,12 @@ tr.tr-blank{
 }
 
 .sel-list a{
-    color:#bb0000;
+    color:#0093dd;
     text-decoration:none;
 }
 
 .bread_crumb {
-    color:#bb0000;
+    color:#0093dd;
     font-weight: bold;
     font-size: 13px;
     margin-bottom: 10px;
@@ -898,7 +898,7 @@ tr.tr-blank{
     text-decoration: none;
 }
 .bread_crumb a:hover {
-   color:#bb0000;
+   color:#0093dd;
     text-decoration: underline;
 }
 #error-box {

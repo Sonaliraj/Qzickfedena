@@ -1,3 +1,20 @@
+table#listing2{
+    background: #c3d9ff;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    padding:0.5em 0.5em 0.5em 0.5em;
+
+    min-height: 1.5em;
+    width: 600px;
+    overflow: auto;
+}
+table#listing2 tr.tr-head{
+    background: #fff;
+    color:#0093dd;
+    font-weight:bold;
+    text-align:left;
+}
+
 #category-list {
     clear : both;
     padding : 10px 0 40px 0px;

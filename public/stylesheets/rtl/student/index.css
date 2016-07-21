@@ -20,7 +20,7 @@
 
 .radio_button{width:400px; margin-top:0px; height:25px;color:#555; float:right; font-size:13px;}
 #information{height:auto;width:100%;margin:0px auto;padding-right:0px; margin-top:30px;}
-#no_result{font-weight:bold;color:#b00}
+#no_result{font-weight:bold;color:#0093dd}
 #ajax_result {padding:10px 0 10px 0;width:204px;float:right;}
 #ajax_result a{color:#000;font-weight:bold; text-decoration:none;}
 #ajax_result a:hover{color:#9E0F15; text-decoration:underline;}
@@ -59,7 +59,7 @@ body #content_wrapper{
     float: none;
 }
 #footer {
-background:url("/images/foot.png") repeat-x scroll 0 0 transparent;
+background:#0093dd;
 height:66px;
 width:100%;
 }

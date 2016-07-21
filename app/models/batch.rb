@@ -50,7 +50,7 @@ class Batch < ActiveRecord::Base
   delegate :course_name,:section_name, :code, :to => :course
   delegate :grading_type, :cce_enabled?, :observation_groups, :cce_weightages, :to=>:course
 
-  validates_presence_of :name, :start_date, :end_date
+  #validates_presence_of :name, :start_date, :end_date
 
   attr_accessor :job_type
 
@@ -66,7 +66,7 @@ class Batch < ActiveRecord::Base
   end
 
   def full_name
-    "#{code} - #{name}"
+    "#{code} - (#{(Date.today.year)}- #{(Date.today.next_year.year)})"
   end
 
   def course_section_name

@@ -2025,7 +2025,7 @@ class FinanceController < ApplicationController
 
     bargraph = BarFilled.new()
     bargraph.width = 1;
-    bargraph.colour = '#bb0000';
+    bargraph.colour = '#0093dd';
     bargraph.dot_size = 3;
     bargraph.text = "#{t('amount')}"
     bargraph.values = data
@@ -2170,7 +2170,7 @@ class FinanceController < ApplicationController
 
     bargraph = BarFilled.new()
     bargraph.width = 1;
-    bargraph.colour = '#bb0000';
+    bargraph.colour = '#0093dd';
     bargraph.dot_size = 3;
     bargraph.text = "#{t('for_the_period')} #{start_date}-#{end_date}"
     bargraph.values = data
@@ -2279,7 +2279,7 @@ class FinanceController < ApplicationController
 
     bargraph = BarFilled.new()
     bargraph.width = 1;
-    bargraph.colour = '#bb0000';
+    bargraph.colour = '#0093dd';
     bargraph.dot_size = 3;
     bargraph.text = "#{t('amount')}"
     bargraph.values = data

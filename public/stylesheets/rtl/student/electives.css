@@ -65,7 +65,7 @@
 }
 
 .linker a:hover{
-    color:#bb0000;
+    color:#0093dd;
     text-decoration: none;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .val {
-    color: #bb0000;
+    color: #0093dd;
     font-weight: bold;
     font-size: 13px;
 }

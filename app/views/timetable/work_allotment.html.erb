@@ -53,6 +53,7 @@
       <li class="listodd" ><%= emp.full_name %><span id="emp_status_<%=emp.id%>"></span></li>
     <% end %>
   </ul>
+ 
   <% form_for :employee_subjects,:html=>{:id=>'work_allotment_form'} do |f| %>
     <% @batches.each do |batch| %>
       <ul class="category-list">
@@ -63,9 +64,12 @@
           <li class="list<%=cycle('odd','even')%>">
             <div class="category-subject-name"><%= "#{subj.name}" %></div>
             <div class="category-employee-options">
+              <%#= @employees.count %>
               <%= select_tag   "employee_subjects[#{subj.id}]", options_for_select([[t('select_employee'),""]]+@employees.map{|em| [em.full_name,em.id]},subj.employees.first.try(:id)) %>
             </div>
+            
             <div class="category-employee-names"><%= "#{subj.employees.collect(&:full_name).join(',')}" %></div>
+
           </li>
         <% end %>
       </ul>

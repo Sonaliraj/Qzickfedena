@@ -86,7 +86,7 @@
 }
 
 #inner-tab-menu ul li {
-    background-color: #9D0E00;
+    background-color:  #0093dd;
     color: #FFFFFF;
     float: left;
     font-size: 0.9em;
@@ -158,7 +158,7 @@ table{
 }
 tr.tr-head{
     background: #fff;
-    color:#b00;
+    color:#0093dd;
     font-weight:bold;
     text-align:left;
 }

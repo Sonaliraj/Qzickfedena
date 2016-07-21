@@ -71,8 +71,8 @@
 
     <% if permitted_to? :index, :sms %>
       <div class="link-box">
-        <div class="link-heading"><%= link_to "#{t('sms_module')}", :controller=>"sms", :action => "index" %></div>
-        <div class="link-descr"><%= t('enable_or_disable_sms_settings') %></div>
+        <div class="link-heading"><%#= link_to "#{t('sms_module')}", :controller=>"sms", :action => "index" %></div>
+        <div class="link-descr"><%#= t('enable_or_disable_sms_settings') %></div>
       </div>
     <% end %>
   </div>

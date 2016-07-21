@@ -19,6 +19,15 @@
 class Student < ActiveRecord::Base
 
   include CceReportMod
+  # require 'writeexcel'
+  require 'fastercsv'
+  # require 'roo'
+  require 'spreadsheet'
+  # require 'fileutils'
+  # require 'iconv'
+  
+
+
     
   belongs_to :country
   belongs_to :batch
@@ -52,16 +61,16 @@ class Student < ActiveRecord::Base
 
   named_scope :by_first_name, :order=>'first_name',:conditions => { :is_active => true }
 
-  validates_presence_of :admission_no, :admission_date, :first_name, :batch_id, :date_of_birth
-  validates_uniqueness_of :admission_no
-  validates_presence_of :gender
+  #validates_presence_of :admission_no, :admission_date, :first_name, :batch_id, :date_of_birth
+  #validates_uniqueness_of :admission_no
+  #validates_presence_of :gender
   validates_format_of     :email, :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,   :allow_blank=>true,
     :message => "#{t('must_be_a_valid_email_address')}"
   validates_format_of     :admission_no, :with => /^[A-Z0-9_-]*$/i,
     :message => "#{t('must_contain_only_letters')}"
 
-  validates_associated :user
-  before_validation :create_user_and_validate
+   validates_associated :user
+   before_validation :create_user_and_validate
 
   has_attached_file :photo,
     :styles => {:original=> "125x125#"},
@@ -82,8 +91,235 @@ class Student < ActiveRecord::Base
       unless self.gender.nil?
     errors.add(:admission_no, "#{t('model_errors.student.error3')}.") if self.admission_no=='0'
     errors.add(:admission_no, "#{t('should_not_be_admin')}") if self.admission_no.to_s.downcase== 'admin'
-    
   end
+
+  # def self.extract
+
+  #   workbook = WriteExcel.new('clg.xls')
+  #   File.new("student.csv", "w+") do |f|
+  #    Student.all.each_with_index do |student, index|
+  #     f << [index+1, student.batch.name, '', student.name, student.email]
+  #     end
+  #   end
+  # end
+
+  # def name
+  #   "#{first_name} #{middle_name} #{last_name}"
+  # end  
+
+  def self.to_csv(options = {})
+    #CSV.generate(options) do |csv|
+    #  csv << attributes
+    #  all.each_with_index do |student, index|
+    #    csv << [index+1, student.batch.name, ' ', student.name, student.email]
+    #  end
+    #end
+    csv_string = FasterCSV.generate do |csv| 
+      csv << ["SI NO.","Batch","Student Name","Student Email"]
+      Student.all.each_with_index do |s, index|
+        csv << [index+1,s.batch.name,s.name,s.email]
+      end
+    end
+    # csv_string
+  end
+
+
+  # def self.import(file)
+  #    spreadsheet = open_spreadsheet(file)
+
+  #    #Spreadsheet.client_encoding = 'UTF-8'
+  #    header = spreadsheet.row(1)
+  #    (2..spreadsheet.last_row).each do |i|
+  #      row = Hash[[header, spreadsheet.row(i)].transpose]
+  #      student = find_by_id(row["id"]) || new
+  #      student.attributes = row.to_hash.slice(*accessible_attributes)
+  #      student.save!
+  #    end
+  #  end
+
+
+
+   def self.open_spreadsheet(file)
+     case File.extname(file.original_filename)
+     when ".csv" then Csv.new(file.path, nil, :ignore)
+     when ".xls" then Excel.new(file.path, nil, :ignore)
+     when ".xlsx" then Excelx.new(file.path, nil, :ignore)
+     #else raise "Unknown file type: #{file.original_filename}"
+     end
+   end
+
+  
+
+    def self.import(file)
+      Spreadsheet.client_encoding = 'UTF-8'
+      #spreadsheet = open_spreadsheet(file)
+      #spreadsheet = Spreadsheet.open(file)
+      spreadsheet = Spreadsheet.open "#{Rails.root}/public/institution.xls"
+      sheet_1 = spreadsheet.worksheets[0]
+      sheet_1.each_with_index do |row, index|
+        next if index.zero?
+        #Rails.logger.debug "inspect row :: #{row.inspect}"
+        s_no,  coursecode, sectionname,  name, email = row
+
+        batch = "2016-2017"
+        #Rails.logger.debug "\n BATCH RE: #{batch.inspect}\n"
+        course_cd = Course.find_by_code(coursecode)
+          if course_cd.blank?
+           course_cd = Course.create(:code => coursecode, :section_name => sectionname)
+           batch = Batch.create(:name => batch, :start_date => Time.now.strftime("%Y-%m-%d"), :end_date => (Date.today + 1.year).strftime("%Y-%m-%d")
+)
+            Rails.logger.debug "\n ERRORS: #{course_cd.errors.full_messages}\n"
+             course_cd.batches << batch
+             course_cd.save
+          # Rails.logger.debug "\n ERRORS: #{course_cd.errors}\n"
+          end
+         # student = Student.find_by_email(email)
+         # password = "123"
+         # user = User.create(:username => student.admission_no, :first_name => student.name, :email => student.email, :student => true, :hashed_password => admission_no.password )
+        
+         last_admitted_student = Student.last
+          if last_admitted_student.nil?
+            admission_no = 1
+          else 
+            admission_no = last_admitted_student.admission_no.next
+          end
+         student = Student.find_by_email(email)
+         password = "123"
+             if student.blank?
+              user = User.create(:username => admission_no, :first_name => name, :email => email, :student => true, :hashed_password => admission_no+ "+" +password )
+              student = Student.create(:batch_id => batch.id, :admission_no => admission_no, :first_name => name, :email => email, :user_id => user)
+             #Rails.logger.debug "\n ERRORS: #{student.errors.full_messages}\n"
+          end
+        end
+    
+          sheet_1 = spreadsheet.worksheets[1]
+           sheet_1.each_with_index do |row, index|
+             next if index.zero?
+             Rails.logger.debug "inspect row :: #{row.compact.inspect}"
+             s_no, coursecode, sectionname, subject, name, email = row.compact
+
+             batch_name = "2016-2017"
+
+           #Rails.logger.debug "\n BATCH RE: #{batch.inspect}\n"
+           course_cd = Course.find_by_code(coursecode)
+           if course_cd.blank?
+            course_cd = Course.create(:code => coursecode, :section_name => sectionname)
+            batch = Batch.create(:name => batch_name)
+            #Rails.logger.debug "\n ERRORS: #{course_cd.errors.full_messages}\n"
+             course_cd.batches << batch
+             course_cd.save
+            end
+
+            if !batch.present?
+              batch = Batch.find_by_name_and_course_id(batch_name, course_cd.id)
+            end
+
+            subject_nm = Subject.find_by_name(subject)
+            if subject_nm.blank?
+              Rails.logger.debug "\n BATCH INSIDE SUBJECT: #{batch.inspect}\n"
+              subject_nm = Subject.create(:name => subject, :batch_id => batch.id)
+              Rails.logger.debug "\n ERRORS: #{subject_nm.errors.full_messages}\n"
+            end
+             # employee =  Employee.find_by_email(email)
+             # password = "123"
+             # user = User.create(:username => employee.admission_number, :first_name => employee.name, :email => employee.email, :employee => true, :hashed_password => admission_number.password )
+
+             job_title = "Teacher"
+             last_admitted_employee = Employee.last
+              if last_admitted_employee.nil?
+                admission_number = E1
+              else
+                admission_number = last_admitted_employee.employee_number.next
+              end
+
+             unless email.blank?
+              employee =  Employee.find_by_email(email)
+               #Rails.logger.debug "email value :: #{email.inspect}"
+               #Rails.logger.debug "email record  :: #{employee.inspect}"
+               password = "123"
+                if employee.blank?
+                 user = User.create(:username => admission_number, :first_name => name, :email => email, :employee => true, :hashed_password => password )
+                  employee = Employee.create(:first_name => name, :employee_number => admission_number, :email => email, :job_title => job_title, :employee_department_id => 1, :status => true, :joining_date => Time.now.strftime("%Y-%m-%d"))
+                  employee.save
+                 #Rails.logger.debug "\n ERRORS: #{employee.errors.full_messages}\n"
+               end
+                #batch = Batch.find_by_name_and_course_id(batch_name, course_cd.id)
+                batch.update_attribute(:employee_id, employee.id)
+            end
+          end
+        end
+
+    # def self.import(file)
+    #   Spreadsheet.client_encoding = 'UTF-8'
+    #   spreadsheet = Spreadsheet.open "#{Rails.root}/public/institution.xls"
+    #   sheet_1 = spreadsheet.worksheets
+    #   Rails.logger.debug "inspect row :: #{sheet_1.length.inspect}"
+    # end
+
+
+    #sheet_1.each do |row|
+    # Rails.logger.debug "inspect row :: #{row.inspect}"  
+    #end
+    # begin
+      # require 'roo'
+     # p "---------inside model-----------"
+      # spreadsheet = open_spreadsheet(file)
+    #   spreadsheet = Spreadsheet.open "#{Rails.root}/public/institution2.xls"
+    #   sheet_1 = spreadsheet.worksheets[0]
+    #   sheet_1.each_with_index(:name => 'Student Name', :email => 'Student Email') do |hash, index|
+    #     next if index.zero? || hash.values.any? { |v| v.nil? }
+    #     student = Student.find_by(:email => hash[:email])
+    #     if student.present?
+    #       skipped_emails << "student email: #{hash[:email]} "
+    #     else
+    #       student_errors , batch_id , student_id = process_student_row(hash)
+    #       batch_ids << batch_id if batch_id.present?
+    #       student_ids << student_id if student_id.present?
+    #       errors = errors + student_errors
+    #     end
+    #   end
+
+    #    sheet_1 = spreadsheet.worksheets[1]
+    #    sheet_1.each_with_index(:subject => 'Subject', :name => 'Teacher Name', :email => 'Teacher Email') do |hash, index|
+    #      next if index.zero? || hash.values.any? { |v| v.nil? }
+    #      existing_teacher = Teacher.find_by(:email => hash[:email]) 
+    #      if existing_teacher.present?
+    #        skipped_emails << "teacher email: #{hash[:email]} "
+    #      else
+    #        teacher_errors , teacher_id = add_teacher(hash)
+    #        teacher_ids << teacher_id if teacher_id.present?
+    #        errors = errors + teacher_errors
+    #      end
+    #    end
+    
+
+    #   # if errors.present?
+      #   unless batch_ids.empty?
+      #     batch_ids.each do |batch_id|
+      #       Batch.find(batch_id).destroy
+      #     end
+      #   end
+      #   unless student_ids.empty?
+      #     student_ids.each do |student_id|
+      #       Student.find(student_id).destroy
+      #     end
+      #   end
+      #   unless teacher_ids.empty?
+      #     teacher_ids.each do |teacher_id|
+      #       Teacher.find(teacher_id).destroy
+      #     end
+      #   end
+      # end
+
+      # if errors.blank?
+      #   self.update_attributes(:status => 'Completed', :messages => skipped_emails.map {|s| "#{s} has been added to this/other institute"})
+      # else
+      #   self.update_attributes(:status =>'Failed', :messages => errors)
+      # end
+    # rescue StandardError => e
+    #   self.update_attributes(:status => 'Failed', :messages => ["Import format error: #{e.message}, #{e.backtrace.join("\n")}"])
+    # end
+  
 
   def create_user_and_validate
     if self.new_record?

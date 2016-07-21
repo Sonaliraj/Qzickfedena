@@ -40,9 +40,9 @@
       <td>
         <%= t('total') %>
       </td>
-      <td>
-        <%= t('percentage') %>(%)
-      </td>
+      <!-- <td>
+        <%#= t('percentage') %>(%)
+      </td> -->
     </tr>
     <tr class="blank"></tr>
     <% @students.each do |student| %>
@@ -52,7 +52,7 @@
             <tr class="tr-<%= cycle('odd', 'even') %>">
               <td class="col-2"><%= link_to student.full_name, {:controller => "attendance_reports", :action => "student_details", :id => student.id } %></td>
               <td class="col-3"> <%= @leaves[student.id]['total'] %></td>
-              <td class="col-3"><%= @leaves[student.id]['percent'].round(2)  %></td>
+              <!-- <td class="col-3"><%#= @leaves[student.id]['percent'].round(2)  %></td> -->
             </tr>
           <% end %>
         <% elsif @range == 'Above' %>
@@ -60,7 +60,7 @@
             <tr class="tr-<%= cycle('odd', 'even') %>">
               <td class="col-2"><%= link_to student.full_name, {:controller => "attendance_reports", :action => "student_details", :id => student.id } %></td>
               <td class="col-3"> <%= @leaves[student.id]['total'] %></td>
-              <td class="col-3"><%= @leaves[student.id]['percent'].round(2)  %></td>
+              <!-- <td class="col-3"><%#= @leaves[student.id]['percent'].round(2)  %></td> -->
             </tr>
           <% end %>
         <% elsif @range == 'Equals' %>
@@ -68,7 +68,7 @@
             <tr class="tr-<%= cycle('odd', 'even') %>">
               <td class="col-2"><%= link_to student.full_name, {:controller => "attendance_reports", :action => "student_details", :id => student.id } %></td>
               <td class="col-3"> <%= @leaves[student.id]['total'] %></td>
-              <td class="col-3"><%= @leaves[student.id]['percent'].round(2)  %></td>
+              <!-- <td class="col-3"><%#= @leaves[student.id]['percent'].round(2)  %></td> -->
             </tr>
           <% end %>
         <% end %>
